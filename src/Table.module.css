@@ -1,0 +1,11 @@
+.root {
+  width: 100%;
+  border: 1px solid gray;
+  border-collapse: collapse;
+}
+
+.root td {
+  border: 1px solid gray;
+  font-size: 0.9em;
+  padding: 2px 5px;
+}
