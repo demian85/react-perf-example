@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateUserLanguage } from './store/actions';
 
+import { updateUserLanguage } from '../store/actions';
 import Table from './Table';
 
 import styles from './TableView.module.css';
