@@ -30,9 +30,13 @@ class TableView extends React.Component {
   }
 }
 
-const translateColumnName = (name) => {
-  /* ... */
-  return name;
+const translateColumnName = (name, lang) => {
+  const map = {
+    'Name': 'Nombre',
+    'Time': 'Hora',
+    'Location': 'Ubicación',
+  };
+  return lang.startsWith('es') ? map[name] : name;
 }
 
 const filterDevices = (devices) => {

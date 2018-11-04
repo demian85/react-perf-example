@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './Table.module.css';
 
-export default class Table extends React.Component {
+export default class Table extends React.PureComponent {
   render() {
     return (
       <table className={styles.root}>

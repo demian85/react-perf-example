@@ -17,8 +17,8 @@ const initialState = {
       width: 200,
     },
     {
-      key: 'report',
-      label: 'Report Time',
+      key: 'time',
+      label: 'Time',
       width: 200,
     },
     {
