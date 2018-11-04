@@ -1,11 +1,18 @@
 .root {
-  width: 100%;
   border: 1px solid gray;
   border-collapse: collapse;
 }
 
-.root td {
+.root td, .root th {
   border: 1px solid gray;
   font-size: 0.9em;
   padding: 2px 5px;
+}
+
+.root tbody tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.root tbody tr:nth-child(odd) {
+  background-color: #f5f5f5;
 }

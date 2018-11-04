@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 
+import { actions } from './actions';
 import { simulateChanges, createRandomDevices } from './utils';
 
 const initialState = {
@@ -7,27 +8,29 @@ const initialState = {
   columns: [
     {
       key: 'id',
-      label: 'ID'
+      label: 'ID',
+      width: 100,
     },
     {
       key: 'name',
-      label: 'Name'
+      label: 'Name',
+      width: 200,
+    },
+    {
+      key: 'report',
+      label: 'Report Time',
+      width: 200,
     },
     {
       key: 'location',
-      label: 'Location'
+      label: 'Location',
+      width: 200,
     },
     // ...
   ],
   userPrefs: {
-    lang: 'en',
+    lang: 'en-US',
   },
-};
-
-export const actions = {
-  UPSERT_DEVICE: 'device/upsert',
-  RESIZE_COLUMN: 'column/resize',
-  SET_USER_PREFS: 'user/set_prefs',
 };
 
 const reducer = (state = initialState, action) => {

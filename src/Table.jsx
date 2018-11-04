@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './Table.module.css';
 
-export default class Table extends React.PureComponent {
+export default class Table extends React.Component {
   render() {
     return (
       <table className={styles.root}>
@@ -21,7 +21,7 @@ export default class Table extends React.PureComponent {
   buildHeader() {
     return this.props.columns.map((col) => {
       return (
-        <td key={col.key}>{col.label}</td>
+        <th key={col.key} style={{ width: `${col.width}px` }}>{col.label} ({col.width}px)</th>
       );
     })
   }
