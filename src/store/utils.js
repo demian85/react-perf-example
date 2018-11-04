@@ -26,7 +26,7 @@ export function simulateChanges(store) {
     const index = chance.integer({ min: 0, max: columns.length - 1 });
     const key = columns[index].key;
     store.dispatch(
-      resizeColumn(key, chance.integer({ min: 100, max: 300 }))
+      resizeColumn(key, chance.integer({ min: 150, max: 300 }))
     );
   }, 4000);
 }
