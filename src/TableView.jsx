@@ -30,8 +30,8 @@ class TableView extends React.Component {
   }
 }
 
-const translateColumnName = (name) => { 
-  /* ... */ 
+const translateColumnName = (name) => {
+  /* ... */
   return name;
 }
 
@@ -52,9 +52,9 @@ const mapStateToProps = (state) => {
   const deviceList = Object.values(state.devices);
   const devices = filterDevices(deviceList);
   const columns = transformColumns(state.columns, state.userPrefs);
-  return { 
-    devices, 
-    columns, 
+  return {
+    devices,
+    columns,
     userlanguage: state.userPrefs.lang,
   };
 }
