@@ -31,8 +31,8 @@ const translateColumnName = (name, lang) => {
   return lang.startsWith('es') ? map[name] : name;
 }
 
-const filterDevices = (devices) => {
-  return devices.filter((device) => !!device.active);
+const filterDevices = (deviceMap) => {
+  return Object.values(deviceMap).filter((device) => !!device.active);
 }
 
 const transformColumns = (columns, userPrefs) => {
@@ -45,8 +45,7 @@ const transformColumns = (columns, userPrefs) => {
 }
 
 const mapStateToProps = (state) => {
-  const deviceList = Object.values(state.devices);
-  const devices = filterDevices(deviceList);
+  const devices = filterDevices(state.devices);
   const columns = transformColumns(state.columns, state.userPrefs);
   return {
     devices,
