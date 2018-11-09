@@ -3,27 +3,18 @@ import { connect } from 'react-redux';
 
 import { updateUserLanguage } from '../store/actions';
 import Table from './Table';
-
-import styles from './TableView.module.css';
+import Controls from './Controls';
 
 class TableView extends React.Component {
-  updateUserLanguage = (e) => {
-    this.props.dispatch(updateUserLanguage(e.target.value));
+  updateUserLanguage = (value) => {
+    this.props.dispatch(updateUserLanguage(value));
   }
 
   render() {
     return (
       <section>
         <h1>Device List ({this.props.devices.length})</h1>
-        <div className={styles.controls}>
-          <label>
-            User language:
-            <select onChange={this.updateUserLanguage} value={this.props.userlanguage}>
-              <option value="es-AR">es-AR</option>
-              <option value="en-US">en-US</option>
-            </select>
-          </label>
-        </div>
+        <Controls onLanguageChange={this.updateUserLanguage} userLanguage={this.props.userLanguage} />
         <Table rows={this.props.devices} columns={this.props.columns} />
       </section>
     );
@@ -32,6 +23,7 @@ class TableView extends React.Component {
 
 const translateColumnName = (name, lang) => {
   const map = {
+    'ID': 'ID',
     'Name': 'Nombre',
     'Time': 'Hora',
     'Location': 'Ubicación',
@@ -59,7 +51,7 @@ const mapStateToProps = (state) => {
   return {
     devices,
     columns,
-    userlanguage: state.userPrefs.lang,
+    userLanguage: state.userPrefs.lang,
   };
 }
 
