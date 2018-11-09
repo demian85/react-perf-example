@@ -6,18 +6,18 @@ import Table from './Table';
 import Controls from './Controls';
 
 class TableView extends React.Component {
-  updateUserLanguage = (value) => {
-    this.props.dispatch(updateUserLanguage(value));
-  }
-
   render() {
     return (
       <section>
         <h1>Device List ({this.props.devices.length})</h1>
-        <Controls onLanguageChange={this.updateUserLanguage} userLanguage={this.props.userLanguage} />
+        <Controls onLanguageChange={(value) => this.updateUserLanguage(value)} userLanguage={this.props.userLanguage} />
         <Table rows={this.props.devices} columns={this.props.columns} />
       </section>
     );
+  }
+
+  updateUserLanguage(value) {
+    this.props.dispatch(updateUserLanguage(value));
   }
 }
 
