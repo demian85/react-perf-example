@@ -1,5 +1,5 @@
 import Chance from 'chance';
-import { upsertDevice, resizeColumn } from './actions';
+import { upsertDevice } from './actions';
 
 const chance = new Chance();
 
@@ -20,15 +20,6 @@ export function simulateChanges(store) {
       upsertDevice(getDevice())
     );
   }, 1000);
-
-  setInterval(() => {
-    const columns = store.getState().columns;
-    const index = chance.integer({ min: 0, max: columns.length - 1 });
-    const key = columns[index].key;
-    store.dispatch(
-      resizeColumn(key, chance.integer({ min: 150, max: 300 }))
-    );
-  }, 4000);
 }
 
 export function onRenderCallback(id, phase, actualDuration, baseDuration, startTime, commitTime, interactions) {
