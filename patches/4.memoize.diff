@@ -1,0 +1,38 @@
+diff --git a/src/components/TableView.jsx b/src/components/TableView.jsx
+index 03d4875..3ab3b7f 100644
+--- a/src/components/TableView.jsx
++++ b/src/components/TableView.jsx
+@@ -1,5 +1,6 @@
+ import React from 'react';
+ import { connect } from 'react-redux';
++import memoizeOne from 'memoize-one';
+ 
+ import { updateUserLanguage } from '../store/actions';
+ import Table from './Table';
+@@ -44,14 +45,18 @@ const transformColumns = (columns, userPrefs) => {
+     });
+ }
+ 
+-const mapStateToProps = (state) => {
+-  const devices = filterDevices(state.devices);
+-  const columns = transformColumns(state.columns, state.userPrefs);
+-  return {
+-    devices,
+-    columns,
+-    userLanguage: state.userPrefs.lang,
+-  };
++const mapStateToProps = () => {
++  const getDevicesMemoized = memoizeOne(filterDevices);
++  const getColumnsMemoized = memoizeOne(transformColumns);
++  return (state) => {
++    const devices = getDevicesMemoized(state.devices);
++    const columns = getColumnsMemoized(state.columns, state.userPrefs);
++    return {
++      devices,
++      columns,
++      userLanguage: state.userPrefs.lang,
++    };
++  }
+ }
+ 
+ export default connect(mapStateToProps)(TableView);

@@ -1,0 +1,20 @@
+diff --git a/src/components/TableView.jsx b/src/components/TableView.jsx
+index 8931861..4108106 100644
+--- a/src/components/TableView.jsx
++++ b/src/components/TableView.jsx
+@@ -10,13 +10,13 @@ class TableView extends React.Component {
+     return (
+       <section>
+         <h1>Device List ({this.props.devices.length})</h1>
+-        <Controls onLanguageChange={(value) => this.updateUserLanguage(value)} userLanguage={this.props.userLanguage} />
++        <Controls onLanguageChange={this.updateUserLanguage} userLanguage={this.props.userLanguage} />
+         <Table rows={this.props.devices} columns={this.props.columns} />
+       </section>
+     );
+   }
+ 
+-  updateUserLanguage(value) {
++  updateUserLanguage = (value) => {
+     this.props.dispatch(updateUserLanguage(value));
+   }
+ }

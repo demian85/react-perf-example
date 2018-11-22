@@ -1,0 +1,34 @@
+diff --git a/src/components/Table.jsx b/src/components/Table.jsx
+index 779c2c8..34398fa 100644
+--- a/src/components/Table.jsx
++++ b/src/components/Table.jsx
+@@ -34,9 +34,11 @@ export default class Table extends React.PureComponent {
+ }
+
+ class Row extends React.PureComponent {
++  ref = React.createRef();
++
+   render() {
+     return (
+-      <tr>
++      <tr ref={this.ref}>
+         {
+           this.props.columns.map((col) => {
+             return (
+@@ -47,4 +49,16 @@ class Row extends React.PureComponent {
+       </tr>
+     );
+   }
++
++  componentDidMount() {
++    this.ref.current.animate({
++      backgroundColor: ['green', 'white']
++    }, { duration: 300 });
++  }
++
++  componentDidUpdate() {
++    this.ref.current.animate({
++      backgroundColor: ['yellow', 'white']
++    }, { duration: 300 });
++  }
+ }
