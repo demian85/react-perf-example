@@ -5,6 +5,4 @@ Stack:
 - React
 - Redux
 
-Every commit adds optimizations in order to improve rendering performance.
-
-Work in progress...
+Every commit adds optimizations in order to improve rendering performance. Check the `patches` folder. They are sorted by name.
